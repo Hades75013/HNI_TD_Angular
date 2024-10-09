@@ -1,0 +1,31 @@
+<div class="container">
+  
+  <h1 [ngStyle]="{'font-family': selectedFont, 'font-size.px': fontSize, 'text-align': alignLeft ? 'left' : alignCenter ? 'center' : 'right'}">Bonjour {{ nom.toUpperCase() }} !</h1> 
+  
+  <!-- Champ de saisie pour le nom -->
+  <input type="text" placeholder="Saisir votre nom" [(ngModel)]="nom" />
+  
+  <!-- Sélection de la police de caractère -->
+  <label for="font-select">Choisissez une police :</label>
+  <select id="font-select" [(ngModel)]="selectedFont">
+    <option *ngFor="let font of listFonts" [value]="font">{{ font }}</option>
+  </select>
+  
+  <!-- Champ de saisie pour la taille de la police -->
+  <label for="font-size">Taille de police (en px) :</label>
+  <input type="number" id="font-size" [(ngModel)]="fontSize" placeholder="Taille en px" />
+ 
+  <!-- Alignement du texte -->
+  <div>
+    <label>
+      <input type="checkbox" [checked]="alignLeft" (change)="updateAlignment('left')" /> Alignement à gauche
+    </label>
+    <label>
+      <input type="checkbox" [checked]="alignCenter" (change)="updateAlignment('center')" /> Alignement centré
+    </label>
+    <label>
+      <input type="checkbox" [checked]="alignRight" (change)="updateAlignment('right')" /> Alignement à droite
+    </label>
+  </div>
+</div>
+    
